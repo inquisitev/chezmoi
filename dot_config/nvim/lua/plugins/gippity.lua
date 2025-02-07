@@ -12,6 +12,7 @@ return {
     lazy=false,
    config = function()
       require("CopilotChat").setup {
+         vim.opt.completeopt = "menuone,noselect"
       }
 
       vim.cmd('Copilot disable')
