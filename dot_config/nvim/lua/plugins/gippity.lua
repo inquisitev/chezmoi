@@ -12,9 +12,9 @@ return {
     lazy=false,
    config = function()
       require("CopilotChat").setup {
-         vim.opt.completeopt = "menuone,noselect"
       }
 
+      vim.opt.completeopt = "menuone,noselect"
       vim.cmd('Copilot disable')
       vim.keymap.set("n", "<leader>co", "<cmd>:CopilotChatOpen<CR>", { desc = "Open copilot chat" })
       vim.keymap.set("n", "<leader>cc", "<cmd>:CopilotChatClose<CR>", { desc = "Close copilot chat" })
