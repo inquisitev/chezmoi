@@ -22,6 +22,7 @@ choco install chezmoi
 choco install gpg4win
 choco install bitwarden-cli
 bw login
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
 chezmoi init https://github.com/iniquisitev/chezmoi.git
 ```
 
