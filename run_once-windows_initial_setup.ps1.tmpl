@@ -1,30 +1,26 @@
 {{ if eq .chezmoi.os "windows" -}}
-
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
 {{- $isWork := false -}}
 {{- $hostname := .chezmoi.hostname -}}
 {{- $fqdn := .chezmoi.fqdnHostname -}}
-
-
 {{- if or (hasPrefix "WD" $hostname) (contains "deere" $fqdn) -}}
     {{- $isWork = true -}}
 {{- end -}}
-
 {{- $isPersonal := or (contains "DESKTOP" $hostname) (contains .chezmoi.username $hostname) -}}
-{{- if $isWork }}
 
+{{- if $isWork }}
+# Work-specific installations
 {{ range .packages.windows.choco -}}
 $package = {{ . | quote }}
 $installed = choco list --local-only | Select-String -Pattern $package
-
- # If the package is not installed, install it
- if (-not $installed) {
-     Write-Host "$package is not installed. Installing..."
-     choco install $package -y
- } else {
-     Write-Host "$package is already installed."
- }
+# If the package is not installed, install it
+if (-not $installed) {
+    Write-Host "$package is not installed. Installing..."
+    choco install $package -y
+} else {
+    Write-Host "$package is already installed."
+}
 {{ end -}}
-
 
 scoop bucket rm extras
 scoop bucket add extras
@@ -32,23 +28,19 @@ scoop bucket add extras
 scoop install {{ . | quote }}
 {{ end -}}
 
-
-
 {{- else if $isPersonal }}
-
+# Personal installations
 {{ range .packages.personal.windows.choco -}}
 $package = {{ . | quote }}
 $installed = choco list --local-only | Select-String -Pattern $package
-
- # If the package is not installed, install it
- if (-not $installed) {
-     Write-Host "$package is not installed. Installing..."
-     choco install $package -y
- } else {
-     Write-Host "$package is already installed."
- }
+# If the package is not installed, install it
+if (-not $installed) {
+    Write-Host "$package is not installed. Installing..."
+    choco install $package -y
+} else {
+    Write-Host "$package is already installed."
+}
 {{ end -}}
-
 
 scoop bucket rm extras
 scoop bucket add extras
@@ -56,26 +48,11 @@ scoop bucket add extras
 scoop install {{ . | quote }}
 {{ end -}}
 
-
-
 {{ range .packages.personal.windows.winget -}}
-winget install -e id={{ . }}
-
-{{ range .packages.personal.windows.choco -}}
-$package = {{ . | quote }}
-$installed = choco list --local-only | Select-String -Pattern $package
-
- # If the package is not installed, install it
- if (-not $installed) {
-     Write-Host "$package is not installed. Installing..."
-     choco install $package -y
- } else {
-     Write-Host "$package is already installed."
- }
+winget install -e --id {{ . }}
 {{ end -}}
 
-{{ end -}}
-
+# Run Windows SQLite setup script
 . {{ .chezmoi.sourceDir }}/.chezmoitemplates/windows_sqlite_setup.ps1
-
-{{ end -}}
+{{- end }}
+{{- end }}
