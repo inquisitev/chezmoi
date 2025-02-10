@@ -16,7 +16,6 @@ packages:
      choco:
       - spotify
       - putty
-      - neovim
       - brave
       - firefox
       - fzf
@@ -46,6 +45,7 @@ packages:
          - Discord.Discord 
          - Nvidia.GeForceExperience
          - Python.Python.3.11 --scope machine
+         - Python.Python.3.13
          - Logitech.GHUB
          - DygmaLabs.Bazecor
          - GitHub.GitHubDesktop
@@ -54,3 +54,32 @@ packages:
          - Logitech.OptionsPlus
          - Ubisoft.Connect
          - Bambulab.Bambustudio
+         - Docker.DockerDesktop
+         - GnuWin32.Make
+         - 7zip.7zip
+         - Neovim.Neovim
+         - wez.wezterm
+         - Mojang.MinecraftLauncher
+        choco:
+         - spotify
+         - putty
+         - brave
+         - firefox
+         - fzf
+         - jq
+         - yarn
+         - curl
+         - ripgrep
+         - 7zip.install
+         - winscp.install
+         - bitwarden-cli
+         - azure-cli
+         - awscli
+         - ruby
+         - dart-sdk
+         - mingw
+         - python3
+         - nodejs.install
+         - sed
+         - lazygit
+
