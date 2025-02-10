@@ -38,5 +38,19 @@ packages:
       - lazygit
      scoop:
       - wezterm
-
-
+     personal:
+        winget: 
+         - Blizzard.BattleNet
+         - Valve.Steam
+         - Nvidia.RTXVoice
+         - Discord.Discord 
+         - Nvidia.GeForceExperience
+         - Python.Python.3.11 --scope machine
+         - Logitech.GHUB
+         - DygmaLabs.Bazecor
+         - GitHub.GitHubDesktop
+         - Oracle.VirtualBox
+         - EpicGames.EpicGamesLauncher
+         - Logitech.OptionsPlus
+         - Ubisoft.Connect
+         - Bambulab.Bambustudio

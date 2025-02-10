@@ -66,6 +66,10 @@ scoop install {{ . | quote }}
 {{- if $isWork }}
 
 {{- else if $isPersonal }}
+{{ range .packages.personal.windows.winget -}}
+winget install -e id={{ . }}
+{{ end -}}
+
 
 {{ end }}
 {{ end -}}
