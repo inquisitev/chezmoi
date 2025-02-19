@@ -5,9 +5,18 @@
 #sudo mv nvim.appimage /usr/bin/nvim
 #sudo chmod u+x /usr/bin/nvim
 
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+# curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 
 {{ range .packages.linux.apt -}}
 sudo apt install -y {{ . | quote }}
 {{ end -}}
+
+
+{{ if eq .chezmoi.username "l6ti0g0" }}
+pip install --upgrade --index-url=https://pypi.deere.com/simple canssparser
+pip install --upgrade --index-url=https://pypi.deere.com/simple pintools
+{{ end }}
+
 {{ end -}}
+
+
