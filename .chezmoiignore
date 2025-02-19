@@ -8,7 +8,7 @@
 .chezmoiscripts/linux_initial_setup.sh
 {{ end }}
 
-{{ if ne .chezmoi.username "l6ti0g0" }}
+{{ if eq .chezmoi.username "l6ti0g0" }}
 ~/.ssh/id_g5
 ~/.ssh/id_g5.pub
 ~/.ssh/id_jdnative
