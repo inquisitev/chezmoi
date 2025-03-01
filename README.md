@@ -32,3 +32,8 @@ sudo apt update
 sudo apt install libsqlite3-dev
 89  sudo ln -s /usr/lib/aarch64-linux-gnu/libsqlite3.so.0 /usr/lib/libsqlite3.so
 ```
+
+extract all rpms onto g5
+```bash
+find /rpms -name *.rpm -exec /bin/bash 'rpm2cpio {} | cpio -idmv' {} \;
+```
